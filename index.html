@@ -177,39 +177,41 @@ body{
 }
 
 .footer{
-  margin:60px 20px;
+  margin:60px 20px 20px;
   font-size:20px;
   color:#333;
   position:relative;
   z-index:2;
 }
 
-.floating-buttons{
-  position:fixed;
-  right:20px;
-  bottom:24px;
+.bottom-buttons{
+  margin:20px auto 50px;
   display:flex;
   flex-direction:column;
-  gap:12px;
-  z-index:30;
+  align-items:center;
+  gap:14px;
+  width:min(320px, calc(100% - 32px));
+  position:relative;
+  z-index:2;
 }
 
-.floating-btn{
+.bottom-btn{
+  width:100%;
   border:none;
   border-radius:999px;
-  padding:14px 20px;
-  font-size:15px;
+  padding:15px 20px;
+  font-size:16px;
   font-weight:500;
   font-family:'Poppins',sans-serif;
   color:white;
-  box-shadow:0 10px 25px rgba(177,18,38,.35);
+  box-shadow:0 10px 25px rgba(177,18,38,.25);
   cursor:pointer;
   transition:transform .25s ease, box-shadow .25s ease, opacity .25s ease;
 }
 
-.floating-btn:hover{
-  transform:translateY(-2px) scale(1.02);
-  box-shadow:0 14px 30px rgba(177,18,38,.45);
+.bottom-btn:hover{
+  transform:translateY(-2px);
+  box-shadow:0 14px 30px rgba(177,18,38,.35);
 }
 
 .info-btn{
@@ -339,16 +341,6 @@ body{
   .details{ max-width:90%; gap:15px; }
   .card{ padding:14px; font-size:16px; }
 
-  .floating-buttons{
-    right:14px;
-    bottom:16px;
-  }
-
-  .floating-btn{
-    padding:12px 16px;
-    font-size:14px;
-  }
-
   .modal{
     padding:22px 18px 18px;
     border-radius:18px;
@@ -359,6 +351,17 @@ body{
   }
 
   .modal-content{
+    font-size:15px;
+  }
+
+  .bottom-buttons{
+    width:min(320px, calc(100% - 24px));
+    gap:12px;
+    margin:18px auto 40px;
+  }
+
+  .bottom-btn{
+    padding:14px 18px;
     font-size:15px;
   }
 }
@@ -379,88 +382,6 @@ body{
 <div class="main" id="main">
   <div class="rose-bg"></div>
 
-  <div class="floating-buttons">
-    <button class="floating-btn info-btn" id="openInfoBtn" aria-label="Otvori važne informacije">
-      Više informacija
-    </button>
-
-    <button class="floating-btn rsvp-btn" id="openRsvpBtn" aria-label="Potvrdi dolazak">
-      Potvrdi dolazak
-    </button>
-  </div>
-
-  <div class="overlay" id="infoOverlay">
-    <div class="modal">
-      <button class="close-modal-btn" id="closeInfoBtn" aria-label="Zatvori">×</button>
-      <h2>Važne informacije</h2>
-
-      <div class="modal-content">
-        <p>
-          Dolazak i okupljanje ćemo obaviti na lokaciji
-          <a href="https://maps.app.goo.gl/cTV7UHUyCXF7XRUx5" target="_blank">otvori lokaciju</a>,
-          gdje će se izvršiti kićenje auta i dolazak po mladu do <strong>14:30h</strong>.
-        </p>
-
-        <p>
-          Ukoliko nekome odgovara da nas sačeka na mjestu Općine Vareš pred samu ceremoniju vjenčanja,
-          može biti na lokaciji
-          <a href="https://maps.app.goo.gl/8Lhd58KL5Mk1U4Ro8" target="_blank">otvori lokaciju</a>
-          do <strong>14:50h</strong>.
-        </p>
-
-        <p>
-          Ceremonija vjenčanja je zakazana za <strong>15:00h</strong> u <strong>Općini Vareš</strong>,
-          a zatim nakon iste odlazimo na šerijatsko vjenčanje u <strong>Varešku Džamiju</strong>,
-          koje je zakazano za <strong>15:30h</strong>.
-        </p>
-
-        <p>
-          Šerijatskom vjenčanju može prisustvovati ko želi, dok ostatak vozila može pričekati svatovsku kolonu
-          na proširenju ispred MUP-a Vareš na lokaciji
-          <a href="https://maps.app.goo.gl/KZVScKo8oGyajPR87" target="_blank">otvori lokaciju</a>.
-        </p>
-
-        <p>
-          Nakon obavljenih događaja, te nakon okupljanja, mladenci sa kumovima odlaze na slikanje
-          na periferiju grada, te po dogovoru svatovska kolona može krenuti prema svadbenom salonu Leyla
-          na lokaciji
-          <a href="https://maps.app.goo.gl/TVWGk8wQ5QDcrd5D8" target="_blank">otvori lokaciju</a>.
-        </p>
-
-        <p>
-          Planirano vrijeme polaska iz Vareša je <strong>16:30h</strong>, a dolazak na lokaciju
-          u svadbeni salon je u <strong>17:30h</strong>.
-        </p>
-      </div>
-    </div>
-  </div>
-
-  <div class="overlay" id="rsvpOverlay">
-    <div class="modal">
-      <button class="close-modal-btn" id="closeRsvpBtn" aria-label="Zatvori">×</button>
-      <h2>Potvrda dolaska</h2>
-
-      <div class="modal-content">
-        <p>
-          Molimo vas da potvrdite svoj dolazak putem kratke forme kako bismo vas mogli što ljepše dočekati i organizovati naš poseban dan.
-        </p>
-
-        <p style="font-size:14px; color:#6b4b52;">
-          Potvrda traje manje od 30 sekundi.
-        </p>
-
-        <a
-          href="https://forms.gle/b5KGGeYLvg4gXoXi9"
-          target="_blank"
-          class="rsvp-submit"
-          style="display:block; text-align:center; text-decoration:none; color:#000000"
-        >
-          Otvori potvrdu
-        </a>
-      </div>
-    </div>
-  </div>
-
   <div class="names">Eldin & Erina</div>
   <div class="date">18.04.2026.</div>
 
@@ -472,6 +393,88 @@ body{
   </div>
 
   <div class="footer">Radujemo se što ćete biti dio našeg posebnog dana ❤️</div>
+
+  <div class="bottom-buttons">
+    <button class="bottom-btn info-btn" id="openInfoBtn" aria-label="Otvori važne informacije">
+      Više informacija
+    </button>
+
+    <button class="bottom-btn rsvp-btn" id="openRsvpBtn" aria-label="Potvrdi dolazak">
+      Potvrdi dolazak
+    </button>
+  </div>
+</div>
+
+<div class="overlay" id="infoOverlay">
+  <div class="modal">
+    <button class="close-modal-btn" id="closeInfoBtn" aria-label="Zatvori">×</button>
+    <h2>Važne informacije</h2>
+
+    <div class="modal-content">
+      <p>
+        Dolazak i okupljanje ćemo obaviti na lokaciji
+        <a href="https://maps.app.goo.gl/cTV7UHUyCXF7XRUx5" target="_blank">otvori lokaciju</a>,
+        gdje će se izvršiti kićenje auta i dolazak po mladu do <strong>14:30h</strong>.
+      </p>
+
+      <p>
+        Ukoliko nekome odgovara da nas sačeka na mjestu Općine Vareš pred samu ceremoniju vjenčanja,
+        može biti na lokaciji
+        <a href="https://maps.app.goo.gl/8Lhd58KL5Mk1U4Ro8" target="_blank">otvori lokaciju</a>
+        do <strong>14:50h</strong>.
+      </p>
+
+      <p>
+        Ceremonija vjenčanja je zakazana za <strong>15:00h</strong> u <strong>Općini Vareš</strong>,
+        a zatim nakon iste odlazimo na šerijatsko vjenčanje u <strong>Varešku Džamiju</strong>,
+        koje je zakazano za <strong>15:30h</strong>.
+      </p>
+
+      <p>
+        Šerijatskom vjenčanju može prisustvovati ko želi, dok ostatak vozila može pričekati svatovsku kolonu
+        na proširenju ispred MUP-a Vareš na lokaciji
+        <a href="https://maps.app.goo.gl/KZVScKo8oGyajPR87" target="_blank">otvori lokaciju</a>.
+      </p>
+
+      <p>
+        Nakon obavljenih događaja, te nakon okupljanja, mladenci sa kumovima odlaze na slikanje
+        na periferiju grada, te po dogovoru svatovska kolona može krenuti prema svadbenom salonu Leyla
+        na lokaciji
+        <a href="https://maps.app.goo.gl/TVWGk8wQ5QDcrd5D8" target="_blank">otvori lokaciju</a>.
+      </p>
+
+      <p>
+        Planirano vrijeme polaska iz Vareša je <strong>16:30h</strong>, a dolazak na lokaciju
+        u svadbeni salon je u <strong>17:30h</strong>.
+      </p>
+    </div>
+  </div>
+</div>
+
+<div class="overlay" id="rsvpOverlay">
+  <div class="modal">
+    <button class="close-modal-btn" id="closeRsvpBtn" aria-label="Zatvori">×</button>
+    <h2>Potvrda dolaska</h2>
+
+    <div class="modal-content">
+      <p>
+        Molimo vas da potvrdite svoj dolazak putem kratke forme kako bismo vas mogli što ljepše dočekati i organizovati naš poseban dan.
+      </p>
+
+      <p style="font-size:14px; color:#6b4b52;">
+        Potvrda traje manje od 30 sekundi.
+      </p>
+
+      <a
+        href="https://forms.gle/b5KGGeYLvg4gXoXi9"
+        target="_blank"
+        class="rsvp-submit"
+        style="display:block; text-align:center; text-decoration:none; color:#FFFFFF;"
+      >
+        Otvori potvrdu
+      </a>
+    </div>
+  </div>
 </div>
 
 <script>
