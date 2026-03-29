@@ -4,9 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Eldin & Erina</title>
-<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
 <style>
-/* GLOBAL */
 body{
   margin:0;
   font-family:'Poppins',sans-serif;
@@ -14,7 +13,6 @@ body{
   overflow:hidden;
 }
 
-/* INTRO */
 .intro{
   position:fixed;
   width:100%;
@@ -28,6 +26,7 @@ body{
   text-align:center;
   z-index:10;
   overflow:hidden;
+  transition:opacity .8s ease;
 }
 
 .introText{
@@ -64,7 +63,6 @@ body{
   font-size:100px;
 }
 
-/* SPARKS BACKGROUND */
 .spark-container{
   position:absolute;
   width:100%;
@@ -74,6 +72,7 @@ body{
   overflow:hidden;
   z-index:-1;
 }
+
 .spark{
   position:absolute;
   width:4px;
@@ -84,13 +83,13 @@ body{
   animation:sparkFloat 6s linear infinite;
   opacity:.8;
 }
+
 @keyframes sparkFloat{
   0%{transform:translateY(0) scale(1); opacity:0;}
   20%{opacity:1;}
   100%{transform:translateY(-100vh) scale(0.5); opacity:0;}
 }
 
-/* MAIN PAGE */
 .main{
   display:none;
   min-height:100vh;
@@ -101,7 +100,6 @@ body{
   overflow:hidden;
 }
 
-/* SINGLE ROSE BACKGROUND */
 .rose-bg{
   position:fixed;
   top:0;
@@ -111,12 +109,11 @@ body{
   background-image:url("images/backgroundroses.png");
   background-size:cover;
   background-position:center center;
-  opacity:0.5; /* 50% providnost */
+  opacity:0.5;
   pointer-events:none;
   z-index:0;
 }
 
-/* HEARTS */
 .heart{
   position:fixed;
   bottom:-20px;
@@ -126,13 +123,13 @@ body{
   opacity:.8;
   z-index:1;
 }
+
 @keyframes float{
   0%{transform:translateY(0); opacity:0;}
   30%{opacity:1;}
   100%{transform:translateY(-110vh); opacity:0;}
 }
 
-/* HEADER */
 .names{
   font-family:'Great Vibes';
   font-size:72px;
@@ -140,6 +137,7 @@ body{
   position:relative;
   z-index:2;
 }
+
 .date{
   font-size:40px;
   margin-top:10px;
@@ -149,35 +147,35 @@ body{
   position:relative;
   z-index:2;
 }
+
 @keyframes pulse{
   0%{transform:scale(1)}
   50%{transform:scale(1.1)}
   100%{transform:scale(1)}
 }
 
-/* DETAILS - VERTICAL CARDS */
 .details{
   margin:40px auto;
   display:flex;
-  flex-direction:column; /* vertikalno jedna ispod druge */
+  flex-direction:column;
   align-items:center;
   gap:20px;
-  max-width:320px; /* iste širine */
+  max-width:320px;
   padding:0 10px;
   position:relative;
   z-index:2;
 }
+
 .card{
-  background:transparent; /* transparentno */
-  border:2px solid #b11226; /* vidljiv okvir */
+  background:transparent;
+  border:2px solid #b11226;
   border-radius:16px;
   padding:20px;
   font-size:20px;
-  width:100%; /* sve iste širine */
+  width:100%;
   text-align:center;
 }
 
-/* FOOTER */
 .footer{
   margin:60px 20px;
   font-size:20px;
@@ -186,7 +184,151 @@ body{
   z-index:2;
 }
 
-/* MEDIA QUERIES */
+.floating-buttons{
+  position:fixed;
+  right:20px;
+  bottom:24px;
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+  z-index:30;
+}
+
+.floating-btn{
+  border:none;
+  border-radius:999px;
+  padding:14px 20px;
+  font-size:15px;
+  font-weight:500;
+  font-family:'Poppins',sans-serif;
+  color:white;
+  box-shadow:0 10px 25px rgba(177,18,38,.35);
+  cursor:pointer;
+  transition:transform .25s ease, box-shadow .25s ease, opacity .25s ease;
+}
+
+.floating-btn:hover{
+  transform:translateY(-2px) scale(1.02);
+  box-shadow:0 14px 30px rgba(177,18,38,.45);
+}
+
+.info-btn{
+  background:linear-gradient(135deg,#b11226,#d62839);
+}
+
+.rsvp-btn{
+  background:linear-gradient(135deg,#8f1020,#c21833);
+}
+
+.overlay{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.45);
+  backdrop-filter:blur(4px);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+  z-index:40;
+}
+
+.overlay.show{
+  display:flex;
+}
+
+.modal{
+  position:relative;
+  width:min(760px, 100%);
+  max-height:85vh;
+  overflow:auto;
+  background:rgba(255,255,255,.96);
+  border:1px solid rgba(177,18,38,.14);
+  border-radius:24px;
+  box-shadow:0 20px 60px rgba(0,0,0,.22);
+  padding:28px 24px 24px;
+  text-align:left;
+  animation:modalIn .28s ease;
+}
+
+@keyframes modalIn{
+  from{
+    opacity:0;
+    transform:translateY(16px) scale(.98);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0) scale(1);
+  }
+}
+
+.modal h2{
+  margin:0 0 18px;
+  padding-right:40px;
+  font-family:'Great Vibes';
+  font-size:42px;
+  color:#b11226;
+}
+
+.modal-content{
+  color:#333;
+  font-size:16px;
+  line-height:1.7;
+}
+
+.modal-content p{
+  margin:0 0 16px;
+}
+
+.modal-content a{
+  color:#b11226;
+  font-weight:600;
+  text-decoration:none;
+}
+
+.modal-content a:hover{
+  text-decoration:underline;
+}
+
+.close-modal-btn{
+  position:absolute;
+  top:14px;
+  right:14px;
+  width:40px;
+  height:40px;
+  border:none;
+  border-radius:50%;
+  background:#f7d8de;
+  color:#b11226;
+  font-size:24px;
+  line-height:1;
+  cursor:pointer;
+  transition:transform .2s ease, background .2s ease;
+}
+
+.close-modal-btn:hover{
+  transform:scale(1.05);
+  background:#f3c8d1;
+}
+
+.rsvp-submit{
+  margin-top:8px;
+  border:none;
+  border-radius:999px;
+  padding:14px 18px;
+  background:linear-gradient(135deg,#b11226,#d62839);
+  color:white;
+  font-size:15px;
+  font-weight:600;
+  cursor:pointer;
+  transition:transform .2s ease, box-shadow .2s ease;
+  box-shadow:0 10px 24px rgba(177,18,38,.25);
+}
+
+.rsvp-submit:hover{
+  transform:translateY(-1px);
+  box-shadow:0 14px 28px rgba(177,18,38,.32);
+}
+
 @media (max-width:768px){
   .introText{ font-size:32px; }
   .datePart{ font-size:60px; }
@@ -196,13 +338,35 @@ body{
   .date{ font-size:28px; }
   .details{ max-width:90%; gap:15px; }
   .card{ padding:14px; font-size:16px; }
+
+  .floating-buttons{
+    right:14px;
+    bottom:16px;
+  }
+
+  .floating-btn{
+    padding:12px 16px;
+    font-size:14px;
+  }
+
+  .modal{
+    padding:22px 18px 18px;
+    border-radius:18px;
+  }
+
+  .modal h2{
+    font-size:34px;
+  }
+
+  .modal-content{
+    font-size:15px;
+  }
 }
 </style>
 </head>
 
 <body>
 
-<!-- INTRO -->
 <div class="intro" id="intro">
   <div class="spark-container" id="sparkContainer"></div>
   <div id="text1" class="introText">Svaka velika priča ima svoj početak…</div>
@@ -212,22 +376,105 @@ body{
   <div id="y" class="datePart year">2026.</div>
 </div>
 
-<!-- MAIN PAGE -->
 <div class="main" id="main">
   <div class="rose-bg"></div>
+
+  <div class="floating-buttons">
+    <button class="floating-btn info-btn" id="openInfoBtn" aria-label="Otvori važne informacije">
+      Više informacija
+    </button>
+
+    <button class="floating-btn rsvp-btn" id="openRsvpBtn" aria-label="Potvrdi dolazak">
+      Potvrdi dolazak
+    </button>
+  </div>
+
+  <div class="overlay" id="infoOverlay">
+    <div class="modal">
+      <button class="close-modal-btn" id="closeInfoBtn" aria-label="Zatvori">×</button>
+      <h2>Važne informacije</h2>
+
+      <div class="modal-content">
+        <p>
+          Dolazak i okupljanje ćemo obaviti na lokaciji
+          <a href="https://maps.app.goo.gl/cTV7UHUyCXF7XRUx5" target="_blank">otvori lokaciju</a>,
+          gdje će se izvršiti kićenje auta i dolazak po mladu do <strong>14:30h</strong>.
+        </p>
+
+        <p>
+          Ukoliko nekome odgovara da nas sačeka na mjestu Općine Vareš pred samu ceremoniju vjenčanja,
+          može biti na lokaciji
+          <a href="https://maps.app.goo.gl/8Lhd58KL5Mk1U4Ro8" target="_blank">otvori lokaciju</a>
+          do <strong>14:50h</strong>.
+        </p>
+
+        <p>
+          Ceremonija vjenčanja je zakazana za <strong>15:00h</strong> u <strong>Općini Vareš</strong>,
+          a zatim nakon iste odlazimo na šerijatsko vjenčanje u <strong>Varešku Džamiju</strong>,
+          koje je zakazano za <strong>15:30h</strong>.
+        </p>
+
+        <p>
+          Šerijatskom vjenčanju može prisustvovati ko želi, dok ostatak vozila može pričekati svatovsku kolonu
+          na proširenju ispred MUP-a Vareš na lokaciji
+          <a href="https://maps.app.goo.gl/KZVScKo8oGyajPR87" target="_blank">otvori lokaciju</a>.
+        </p>
+
+        <p>
+          Nakon obavljenih događaja, te nakon okupljanja, mladenci sa kumovima odlaze na slikanje
+          na periferiju grada, te po dogovoru svatovska kolona može krenuti prema svadbenom salonu Leyla
+          na lokaciji
+          <a href="https://maps.app.goo.gl/TVWGk8wQ5QDcrd5D8" target="_blank">otvori lokaciju</a>.
+        </p>
+
+        <p>
+          Planirano vrijeme polaska iz Vareša je <strong>16:30h</strong>, a dolazak na lokaciju
+          u svadbeni salon je u <strong>17:30h</strong>.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="overlay" id="rsvpOverlay">
+    <div class="modal">
+      <button class="close-modal-btn" id="closeRsvpBtn" aria-label="Zatvori">×</button>
+      <h2>Potvrda dolaska</h2>
+
+      <div class="modal-content">
+        <p>
+          Molimo vas da potvrdite svoj dolazak putem kratke forme kako bismo vas mogli što ljepše dočekati i organizovati naš poseban dan.
+        </p>
+
+        <p style="font-size:14px; color:#6b4b52;">
+          Potvrda traje manje od 30 sekundi.
+        </p>
+
+        <a
+          href="https://forms.gle/b5KGGeYLvg4gXoXi9"
+          target="_blank"
+          class="rsvp-submit"
+          style="display:block; text-align:center; text-decoration:none; color:#000000"
+        >
+          Otvori potvrdu
+        </a>
+      </div>
+    </div>
+  </div>
+
   <div class="names">Eldin & Erina</div>
   <div class="date">18.04.2026.</div>
+
   <div class="details">
-    <div class="card">Okupljanje<br><strong>13:00h</strong></div>
+    <div class="card">Okupljanje<br><strong>14:30h</strong></div>
     <div class="card">Vjenčanje<br><strong>15:00h</strong><br>Općina Vareš</div>
-    <div class="card">Šerijatsko vjenčanje<br><strong>15:45h</strong></div>
-    <div class="card">Svadbeno slavlje<br><strong>17:00h</strong><br>Svadbeni salon Leyla Podlugovi</div>
+    <div class="card">Šerijatsko vjenčanje<br><strong>15:30h</strong></div>
+    <div class="card">Svadbeno slavlje<br><strong>17:30h</strong><br>Svadbeni salon Leyla Podlugovi</div>
   </div>
+
   <div class="footer">Radujemo se što ćete biti dio našeg posebnog dana ❤️</div>
 </div>
 
 <script>
-// INTRO ANIMATION
 const text1 = document.getElementById("text1")
 const text2 = document.getElementById("text2")
 const d = document.getElementById("d")
@@ -251,7 +498,6 @@ setTimeout(()=>{
   },1000)
 }, 13500)
 
-// HEART ANIMATION
 function startHearts(){
   setInterval(()=>{
     const heart=document.createElement("div")
@@ -263,7 +509,6 @@ function startHearts(){
   },700)
 }
 
-// SPARKS ANIMATION
 function startSparks(){
   setInterval(()=>{
     const spark=document.createElement("div")
@@ -276,6 +521,48 @@ function startSparks(){
   },120)
 }
 startSparks()
+
+const openInfoBtn = document.getElementById("openInfoBtn");
+const closeInfoBtn = document.getElementById("closeInfoBtn");
+const infoOverlay = document.getElementById("infoOverlay");
+
+openInfoBtn.addEventListener("click", () => {
+  infoOverlay.classList.add("show");
+  document.body.style.overflow = "hidden";
+});
+
+closeInfoBtn.addEventListener("click", () => {
+  infoOverlay.classList.remove("show");
+  document.body.style.overflow = "auto";
+});
+
+infoOverlay.addEventListener("click", (e) => {
+  if (e.target === infoOverlay) {
+    infoOverlay.classList.remove("show");
+    document.body.style.overflow = "auto";
+  }
+});
+
+const openRsvpBtn = document.getElementById("openRsvpBtn");
+const closeRsvpBtn = document.getElementById("closeRsvpBtn");
+const rsvpOverlay = document.getElementById("rsvpOverlay");
+
+openRsvpBtn.addEventListener("click", () => {
+  rsvpOverlay.classList.add("show");
+  document.body.style.overflow = "hidden";
+});
+
+closeRsvpBtn.addEventListener("click", () => {
+  rsvpOverlay.classList.remove("show");
+  document.body.style.overflow = "auto";
+});
+
+rsvpOverlay.addEventListener("click", (e) => {
+  if (e.target === rsvpOverlay) {
+    rsvpOverlay.classList.remove("show");
+    document.body.style.overflow = "auto";
+  }
+});
 </script>
 
 </body>
